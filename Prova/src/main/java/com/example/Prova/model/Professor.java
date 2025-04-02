@@ -1,46 +1,26 @@
 package com.example.Prova.model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.br.CPF;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
-public class Professor {
-    
-    @NotBlank
-    private String nome;
-    @NotNull
-    private Integer idade;
-    
-    @CPF
-    @NotBlank
-    private String CPF;
-    public Professor(String nome, Integer idade, String CPF) {
-        this.nome = nome;
-        this.idade = idade;
-        this.CPF = CPF;
+@Entity  // Marca a classe como uma entidade JPA
+@DiscriminatorValue("PROFESSOR")  // A coluna "tipo" no banco de dados vai ter o valor "PROFESSOR" para indicar que é um Professor
+public class Professor extends Pessoa {
+
+    private String departamento;  // Campo específico para a classe Professor
+
+    // Construtor
+    public Professor(String nome, Integer idade, String cpf, String departamento) {
+        super(nome,cpf,idade);  // Chama o construtor da classe Pessoa (superclasse)
+        this.departamento = departamento;  // Inicializa o campo específico da classe Professor
     }
 
-    public String getNome() {
-        return nome;
+    // Getters e Setters
+    public String getDepartamento() {
+        return departamento;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 }
