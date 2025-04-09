@@ -46,6 +46,19 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- Remova a versão para usar a versão gerenciada automaticamente pelo Spring Boot -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <!-- Remova a tag <version> -->
+        </dependency>
+
+        <!-- Caso precise do JSR 303 API -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+
         <!-- Dependência do Spring Boot DevTools (para desenvolvimento mais ágil) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,7 +66,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        
 
         <!-- Dependência de Testes do Spring Boot -->
         <dependency>

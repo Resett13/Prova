@@ -1,21 +1,21 @@
 package com.example.Prova.model;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 
-@Entity  // Marca a classe como uma entidade JPA
-@DiscriminatorValue("PROFESSOR")  // A coluna "tipo" no banco de dados vai ter o valor "PROFESSOR" para indicar que é um Professor
+@Entity
 public class Professor extends Pessoa {
+    private String departamento;
 
-    private String departamento;  // Campo específico para a classe Professor
+    // Construtor vazio para o JPA
+    public Professor() {}
 
-    // Construtor
-    public Professor(String nome, Integer idade, String cpf, String departamento) {
-        super(nome,cpf,idade);  // Chama o construtor da classe Pessoa (superclasse)
-        this.departamento = departamento;  // Inicializa o campo específico da classe Professor
+    // Construtor específico para Professor
+    public Professor(@NotBlank(message = "Nome é obrigatório.") String nome, String cpf, Integer idade, String departamento) {
+        super(nome, cpf, idade);
+        this.departamento = departamento;
     }
 
-    // Getters e Setters
     public String getDepartamento() {
         return departamento;
     }
